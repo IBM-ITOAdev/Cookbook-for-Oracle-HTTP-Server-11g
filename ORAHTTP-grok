@@ -1,0 +1,36 @@
+###################################################
+# Sample Logstash v1.5.x Configuration for Oracle HTTP Server 11g
+#
+####################################################
+# v1.0 Doug McClure 9/23/15 Oracle HTTP Server 11g
+#
+####################################################
+
+################################################################################################################################################################
+
+# Oracle HTTP Server Error Logs - foobar1.log
+# no multiline messages seen in provided samples
+
+#[2015-09-22T12:01:56.0031-07:00] [OHS] [ERROR:32] [OHS-9999] [mod_weblogic.c] [host_id: foobar1] [host_addr: 10.0.0.1] [tid: 3085] [user: wlsadmin] [ecid: 000002] [rid: 0] [VirtualHost: main]  ap_proxy: trying HEAD /index.html at backend host '10.0.0.1/7003; got exception 'CONNECTION_REFUSED [os error=55, line 1582 of ../common/URL.cpp]: apr_socket_connect call failed with error=79, host=10.0.0.1, port=7003 '
+
+
+ORAHTTPERR %{TIMESTAMP_ISO8601:origTimestamp}\]\s+\[%{DATA:logType}\]\s+\[%{DATA:msgTypeLevel}\]\s+\[%{DATA:msg_ID}\]\s+\[%{DATA:class}\]\s+\[host_id:\s+%{DATA:hostID}\]\s+\[host_addr:\s+%{DATA:hostAddr}\]\s+\[tid:\s+%{DATA:tid}\]\s+\[user:\s+%{DATA:user}\]\s+\[ecid:\s+%{DATA:ecid}\]\s+\[rid:\s+%{DATA:rid}\]\s+\[VirtualHost:\s+%{DATA:VirtualHost}\]\s+%{GREEDYDATA:origMessage}
+
+#has a PID field
+ORAHTTPERR2 %{TIMESTAMP_ISO8601:origTimestamp}\]\s+\[%{DATA:logType}\]\s+\[%{DATA:msgTypeLevel}\]\s+\[%{DATA:msg_ID}\]\s+\[%{DATA:class}\]\s+\[host_id:\s+%{DATA:hostID}\]\s+\[host_addr:\s+%{DATA:hostAddr}\]\s+\[pid:\s+%{DATA:pid}\]\s+\[tid:\s+%{DATA:tid}\]\s+\[user:\s+%{DATA:user}\]\s+\[VirtualHost:\s+%{DATA:VirtualHost}\]\s+%{GREEDYDATA:origMessage}
+
+################################################################################################################################################################
+
+# Oracle HTTP Server Logs - access_log
+# no multiline messages seen in provided samples
+
+#127.0.0.1 - - [22/Sep/2015:05:00:04 -0700] "HEAD  /index.html HTTP/1.1" 503 -
+#10.0.0.1 - - [22/Sep/2015:01:48:20 -0700] "GET /foo/wwr.get_file?p_security_group_id=56&p_flow_id=11&p_fname=alert_region.css HTTP/1.1" 200 -
+#10.0.0.2 - - [22/Sep/2015:04:59:59 -0700] "GET /foo/f?p=12:12:1601::NO:::&success_msg=%3Cfont+color+%3D%22black%22+size%3D%222%22%3ELikelihood+lost+for+linked+opportunity+78083+is+su++%3C%2Ffont%3E%23%2F HTTP/1.1" 200 113863
+
+#this default grok pattern works, but I've broken it out below so I can set timestamp field name to match above
+#ORAHTTPACCESS %{COMMONAPACHELOG}
+
+ORAHTTPACCESS %{IPORHOST:clientip} %{USER:ident} %{USER:auth} \[%{HTTPDATE:origTimestamp}\] "(?:%{WORD:verb} %{NOTSPACE:request}(?: HTTP/%{NUMBER:httpversion})?|%{DATA:rawrequest})" %{NUMBER:response} (?:%{GREEDYDATA:bytes}|-)
+
+################################################################################################################################################################
