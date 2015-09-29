@@ -1,0 +1,1 @@
+timestamp,hostname,logfile,logType,msgTypeLevel,msg_ID,class,hostID,hostAddr,tid,user,ecid,rid,VirtualHost,origMsg

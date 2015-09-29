@@ -1,0 +1,155 @@
+[SCALA_server]
+scalaHome: /opt/scala/driver
+
+[DSV_file]
+delimiter: ,
+quoteChar: "
+moduleName: OracleHTTPError
+version: 1.0.0.0
+
+[field0_indexConfig]
+name: logRecord
+dataType: TEXT
+retrievable: true
+retrieveByDefault: true
+sortable: false
+filterable: false
+searchable: true
+path_1: content.text
+combine: FIRST
+
+[field1_indexConfig]
+name: timestamp
+dataType: DATE
+dateFormat: yyyy-MM-dd'T'HH:mm:ss.SSSX
+retrievable: true
+retrieveByDefault: true
+sortable: true
+filterable: true
+searchable: true
+
+[field2_indexConfig]
+name: hostname
+dataType: TEXT
+retrievable: true
+retrieveByDefault: true
+sortable: true
+filterable: true
+searchable: true
+
+[field3_indexConfig]
+name: logfile
+dataType: TEXT
+retrievable: true
+retrieveByDefault: true
+sortable: true
+filterable: true
+searchable: true
+
+[field4_indexConfig]
+name: logType
+dataType: TEXT
+retrievable: true
+retrieveByDefault: true
+sortable: true
+filterable: true
+searchable: true
+
+[field5_indexConfig]
+name: msgTypeLevel
+dataType: TEXT
+retrievable: true
+retrieveByDefault: true
+sortable: true
+filterable: true
+searchable: true
+
+[field6_indexConfig]
+name: msg_ID
+dataType: TEXT
+retrievable: true
+retrieveByDefault: true
+sortable: true
+filterable: true
+searchable: true
+
+[field7_indexConfig]
+name: class
+dataType: TEXT
+retrievable: true
+retrieveByDefault: true
+sortable: true
+filterable: true
+searchable: true
+
+[field8_indexConfig]
+name: hostID
+dataType: TEXT
+retrievable: true
+retrieveByDefault: true
+sortable: true
+filterable: true
+searchable: true
+
+[field9_indexConfig]
+name: hostAddr
+dataType: TEXT
+retrievable: true
+retrieveByDefault: true
+sortable: true
+filterable: true
+searchable: true
+
+[field10_indexConfig]
+name: tid
+dataType: TEXT
+retrievable: true
+retrieveByDefault: true
+sortable: true
+filterable: true
+searchable: true
+
+[field11_indexConfig]
+name: user
+dataType: TEXT
+retrievable: true
+retrieveByDefault: true
+sortable: true
+filterable: true
+searchable: true
+
+[field12_indexConfig]
+name: ecid
+dataType: TEXT
+retrievable: true
+retrieveByDefault: true
+sortable: false
+filterable: false
+searchable: true
+
+[field13_indexConfig]
+name: rid
+dataType: TEXT
+retrievable: true
+retrieveByDefault: true
+sortable: false
+filterable: false
+searchable: true
+
+[field14_indexConfig]
+name: VirtualHost
+dataType: TEXT
+retrievable: true
+retrieveByDefault: true
+sortable: true
+filterable: true
+searchable: true
+
+[field15_indexConfig]
+name: origMsg
+dataType: TEXT
+retrievable: true
+retrieveByDefault: true
+sortable: false
+filterable: false
+searchable: true
