@@ -9,10 +9,10 @@ The following was built for a customer using LA 132 and the bundled version logs
 1. Install LA 132 and the bundled logstash 1.5.3.
 2. Copy the *-logstash.conf file to your logstash configuration directory. Keep in mind the LA bundled logstash version expects a certain location and filename by default.
 3. Update the *-logstash.conf file based on your deployment. 
-- inputs to be used for ingestion approach (streaming via TCP, syslog, kafka, file, etc.
-- paths for your GROK patterns files
-- scala output configuration
-- others based on your environment and logfiles
+  - inputs to be used for ingestion approach (streaming via TCP, syslog, kafka, file, etc.
+  - paths for your GROK patterns files
+  - scala output configuration
+  - others based on your environment and logfiles
 4. Copy the *-GROK file to your logstash patterns directory. Update the logstash configuration to reflect this location.
 5. Copy the *.header and *.props file to your $LAHOME/unity_content/DSVToolkit_v1.1.0.4/ directory.
 6. Update the *.props file scalaHome: parameter based on your deployment.
